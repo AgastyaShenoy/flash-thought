@@ -1,0 +1,253 @@
+.note-card {
+    background: var(--note-bg);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--note-border);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 200px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+.note-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.note-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.note-text {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    word-wrap: break-word;
+    flex: 1;
+}
+
+.note-preview {
+    opacity: 0.8;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.note-timer {
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    align-self: flex-start;
+}
+
+.note-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.note-actions button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    background: var(--btn-bg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s;
+}
+
+.note-actions button:hover {
+    transform: scale(1.1);
+}
+
+.time-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-decrease:hover {
+    background: var(--warning-orange);
+    color: white;
+}
+
+.btn-extend:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+.btn-process:hover {
+    background: var(--accent-pink);
+    color: white;
+}
+
+/* Status-based animations and effects */
+.status-healthy {
+    border-color: rgba(161, 140, 209, 0.3);
+}
+
+.status-warning {
+    border-color: var(--warning-orange);
+    animation: gentle-pulse 4s infinite;
+}
+
+.status-warning .note-timer {
+    color: #d97706;
+}
+
+.status-critical {
+    border-color: var(--danger-red);
+    animation: heartbeat 1.5s infinite;
+}
+
+.status-critical .note-timer {
+    color: var(--danger-red);
+    font-weight: 700;
+}
+
+.status-dying {
+    border-color: darkred;
+    animation: panic-shake 0.5s infinite;
+    background: rgba(255, 8, 68, 0.1);
+}
+
+.status-dying .note-text {
+    opacity: 0.7;
+}
+
+.status-dying .note-timer {
+    color: darkred;
+    font-weight: 800;
+    background: rgba(255, 0, 0, 0.1);
+}
+
+/* Life bar */
+.life-bar-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.life-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-pink), var(--accent-blue));
+    transition: width 1s linear;
+}
+
+.status-warning .life-bar {
+    background: var(--warning-orange);
+}
+
+.status-critical .life-bar {
+    background: var(--danger-red);
+}
+
+.status-dying .life-bar {
+    background: darkred;
+}
+
+/* Keyframes */
+@keyframes gentle-pulse {
+    0% {
+        box-shadow: 0 4px 15px rgba(246, 211, 101, 0.1);
+    }
+
+    50% {
+        box-shadow: 0 4px 25px rgba(246, 211, 101, 0.4);
+    }
+
+    100% {
+        box-shadow: 0 4px 15px rgba(246, 211, 101, 0.1);
+    }
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+
+    14% {
+        transform: scale(1.03);
+    }
+
+    28% {
+        transform: scale(1);
+    }
+
+    42% {
+        transform: scale(1.03);
+    }
+
+    70% {
+        transform: scale(1);
+    }
+}
+
+@keyframes panic-shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+        opacity: 0.9;
+    }
+
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+        opacity: 0.8;
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+        opacity: 0.7;
+    }
+
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+        opacity: 0.6;
+    }
+
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+        opacity: 0.5;
+    }
+}
