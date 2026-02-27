@@ -3,7 +3,8 @@
 A rapid, intentional note-taking scratchpad with a built-in self-destruct mechanism. 
 Capture your fleeting ideas, but if you don't save, process, or "feed" them—they fade away into the void.
 
-![Flash-Thought App Preview](./public/vite.svg) {/* Placeholder for a real screenshot if available later */}
+![Flash-Thought App Preview](./public/vite.svg) 
+![Image showing the apps ui](image.png)
 
 ## 🚀 Built With
 * React / Vite
