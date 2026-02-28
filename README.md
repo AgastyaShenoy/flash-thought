@@ -1,7 +1,10 @@
 # Flash-Thought ✨
 
-A rapid, intentional note-taking scratchpad with a built-in self-destruct mechanism. 
-Capture your fleeting ideas, but if you don't save, process, or "feed" them—they fade away into the void.
+My first ever github app release - albeit by basically only using ai.
+
+A rapid, intentional note-taking; task completion scratchpad with a built-in self-destruct mechanism. 
+Made this so I can actually remind myself of the things I wanted to/am supposed to do and a timer to count down 
+before how long I was supposed to do it.
 
 ![Flash-Thought App Preview](./public/vite.svg) 
 ![Image showing the apps ui](image.png)
@@ -10,7 +13,7 @@ Capture your fleeting ideas, but if you don't save, process, or "feed" them—th
 * React / Vite
 * BlockNote (Obsidian-style WYSIWYG Markdown Editor)
 * Vanilla CSS with Glassmorphism
-* Orchestrated and generated autonomously using **Google Antigravity**
+* Orchestrated and generated autonomously using **Google Antigravity** - prompted by Aga2522
 
 ## ⚡ Features
 - **Time-To-Live (TTL)**: Notes degrade visually (pulse, panic, turn red) as time runs out.
