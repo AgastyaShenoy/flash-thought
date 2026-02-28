@@ -17,6 +17,9 @@ function App() {
 
   const [editingNoteId, setEditingNoteId] = useState(null);
 
+  // Auto-Update state
+  const [updateReady, setUpdateReady] = useState(false);
+
   // Initialize BlockNote
   const editor = useCreateBlockNote();
 
@@ -64,6 +67,21 @@ function App() {
     setInputValue('');
   };
 
+  // Electron auto-updater listener
+  useEffect(() => {
+    if (window.electronAPI) {
+      window.electronAPI.onUpdateDownloaded(() => {
+        setUpdateReady(true);
+      });
+    }
+
+    return () => {
+      if (window.electronAPI) {
+        window.electronAPI.removeAllListeners('update_downloaded');
+      }
+    };
+  }, []);
+
   const removeNote = (id) => {
     setNotes(prev => prev.filter(n => n.id !== id));
     if (editingNoteId === id) setEditingNoteId(null);
@@ -107,6 +125,13 @@ function App() {
 
   return (
     <div className="app-container fade-in">
+      {updateReady && (
+        <div className="update-banner">
+          <p>🎁 A new version of Flash-Thought is ready!</p>
+          <button onClick={() => window.electronAPI.restartApp()}>Restart to Update</button>
+        </div>
+      )}
+
       <header className="header">
         <h1>Flash-Thought ✨</h1>
         <p>Capture ideas before they fade away into the void!</p>

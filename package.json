@@ -1,18 +1,49 @@
 {
   "name": "flash-thought",
   "private": true,
-  "version": "0.0.0",
+  "main": "electron/main.cjs",
+  "version": "1.0.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "electron:start": "cross-env NODE_ENV=development electron .",
+    "electron:dev": "concurrently -k \"cross-env BROWSER=none npm run dev\" \"wait-on http://localhost:5173 && npm run electron:start\"",
+    "electron:build": "npm run build && electron-builder",
+    "electron:publish": "npm run build && electron-builder -p always",
     "lint": "eslint .",
     "preview": "vite preview"
+  },
+  "build": {
+    "appId": "com.antigravity.flashthought",
+    "productName": "Flash-Thought",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "mac": {
+      "category": "public.app-category.productivity"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "AgastyaShenoy",
+      "repo": "flash-thought"
+    }
   },
   "dependencies": {
     "@blocknote/core": "^0.47.0",
     "@blocknote/mantine": "^0.47.0",
     "@blocknote/react": "^0.47.0",
+    "electron-is-dev": "^3.0.1",
+    "electron-updater": "^6.8.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
@@ -21,10 +52,16 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "electron": "^40.6.1",
+    "electron-builder": "^26.8.1",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
-    "vite": "^7.3.1"
+    "jimp": "^0.16.13",
+    "vite": "^7.3.1",
+    "wait-on": "^9.0.4"
   }
 }

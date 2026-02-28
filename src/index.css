@@ -133,6 +133,38 @@ button:hover {
   flex-direction: column;
 }
 
+/* Update Banner */
+.update-banner {
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.update-banner p {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.update-banner button {
+  background: white;
+  color: var(--accent-blue);
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.update-banner button:hover {
+  background: var(--bg-gradient);
+  transform: scale(1.05);
+}
+
 .header {
   text-align: center;
   margin-bottom: 2rem;
